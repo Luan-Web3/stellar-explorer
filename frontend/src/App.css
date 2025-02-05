@@ -1,0 +1,18 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  background-color: #f0f0f0; /* Um tom de branco suave para o fundo */
+  color: #333; /* Cor de texto escura para contraste */
+  font-family: sans-serif;
+}
+
+h1 {
+  color: #007bff; /* Azul para o título */
+}
+
+/* ... outros estilos ... */
