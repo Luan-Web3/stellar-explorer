@@ -1,6 +1,5 @@
 export interface LedgerDTO {
-    id: string;
-    hash: number;
+    sequence: number;
     transactionCount: number;
     closedAt: number;
 };

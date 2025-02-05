@@ -13,8 +13,7 @@ export const getLatestLedgers = async (req: Request, res: Response) => {
         });
 
         const ledgers: LedgerDTO[] = response.data._embedded.records.map((ledger: any) => ({
-            id: ledger.sequence,
-            hash: ledger.hash,
+            sequence: ledger.sequence,
             transactionCount: ledger.successful_transaction_count,
             closedAt: ledger.closed_at
         }));
