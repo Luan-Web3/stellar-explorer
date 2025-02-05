@@ -1,74 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Container, Grid, Typography } from '@mui/material';
+import SearchBar from '../components/SearchBar';
 import BlockList from '../components/BlockList';
-import SearchForm from '../components/SearchForm';
-import axios from 'axios';
-import './Home.module.css';
-
-const mockBlocks = Array.from({ length: 10 }, (_, i) => ({
-  id: (i + 1).toString(),
-  timestamp: new Date(Date.now() - i * 60000).toISOString(),
-  transaction_count: Math.floor(Math.random() * 100),
-  validator: `Validator ${i + 1}`,
-}));
+import TransactionList from '../components/TransactionList';
 
 function Home() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [latestBlocks, setLatestBlocks] = useState(mockBlocks); // Dados mockados
-  const [loading, setLoading] = useState(false); // Não precisa carregar nada
-  const [error, setError] = useState(null);
-
-  // useEffect está comentado
-  /*useEffect(() => {
-    const fetchLatestBlocks = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const response = await axios.get('/api/latest_blocks');
-        setLatestBlocks(response.data);
-      } catch (error) {
-        console.error('Erro ao buscar blocos:', error);
-        setError('Erro ao carregar blocos.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchLatestBlocks();
-  }, []);*/
-
-  const handleSearch = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await axios.get(`/api/search?q=${searchQuery}`);
-      console.log('Resultados da busca:', response.data);
-    } catch (error) {
-      console.error('Erro na busca:', error);
-      setError('Erro na busca.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div>
-      <h1>Explorador Stellar</h1>
+    <Container>
+      <Typography variant="h4" align="center" gutterBottom sx={{ marginTop: 2 }}>
+        Explorador de Blocos Stellar
+      </Typography>
 
-      <SearchForm
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        handleSearch={handleSearch}
-      />
+      <SearchBar />
 
-      <h2>Últimos Blocos Minerados</h2>
-
-      {loading && <p>Carregando...</p>}
-      {error && <p>{error}</p>}
-
-      <BlockList blocks={latestBlocks} />
-    </div>
+      <Grid container spacing={3} sx={{ marginTop: 2 }}>
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h6" gutterBottom>
+            Últimos Blocos
+          </Typography>
+          <BlockList />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h6" gutterBottom>
+            Últimas Transações
+          </Typography>
+          <TransactionList />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
-export { Home };
+export default Home;

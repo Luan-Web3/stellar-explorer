@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Button, Container, Paper, Typography, Grid } from '@mui/material';
-import BlockDetails from '../components/BlockDetails';
+import TransactionDetails from '../components/TransactionDetails';
 
-function Block() {
+function Transaction() {
   const { id } = useParams();
 
   return (
@@ -12,10 +12,10 @@ function Block() {
         <Button component={Link} to="/" variant="contained" sx={{ marginBottom: 2 }}>
           Voltar
         </Button>
-        <BlockDetails blockId={id} />
+        <TransactionDetails transactionId={id} />
       </Paper>
     </Container>
   );
 }
 
-export default Block;
+export default Transaction;
