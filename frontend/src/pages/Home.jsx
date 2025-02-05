@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import BlockList from '../../components/BlockList';
-import SearchForm from '../../components/SearchForm';
+import BlockList from '../components/BlockList';
+import SearchForm from '../components/SearchForm';
 import axios from 'axios';
 import './Home.module.css';
 
