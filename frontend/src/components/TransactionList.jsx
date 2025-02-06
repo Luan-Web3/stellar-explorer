@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { List, ListItem, ListItemText, Divider, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import stellarService from '../services/stellarService';
+import api from '../axios';
 
 function TransactionList() {
   const [transactions, setTransactions] = useState([]);
@@ -11,8 +12,8 @@ function TransactionList() {
   useEffect(() => {
     async function fetchTransactions() {
       try {
-        const latestTransactions = await stellarService.getLatestTransactions(10); // Busca as últimas 10 transações
-        setTransactions(latestTransactions);
+        const res = await api.get('/transactions');
+        setTransactions(res.data);
       } catch (err) {
         setError(err);
       } finally {
@@ -33,12 +34,12 @@ function TransactionList() {
 
   return (
     <List>
-      {transactions.map((transaction) => (
+      {transactions.map((transaction, index) => (
         <React.Fragment key={transaction.hash}>
-          <ListItem button component={Link} to={`/transaction/${transaction.hash}`}>
+          <ListItem component={Link} to={`/transaction/${transaction.hash}`}>
             <ListItemText primary={transaction.hash} />
           </ListItem>
-          <Divider />
+          {index < transactions.length - 1 && <Divider />}
         </React.Fragment>
       ))}
     </List>

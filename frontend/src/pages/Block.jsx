@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Button, Container, Paper, Typography, Grid } from '@mui/material';
+import { Button, Container, Paper } from '@mui/material';
 import BlockDetails from '../components/BlockDetails';
 
 function Block() {

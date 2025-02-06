@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Typography } from '@mui/material';
+import { Container, Stack, Box, Typography } from '@mui/material';
 import SearchBar from '../components/SearchBar';
 import BlockList from '../components/BlockList';
 import TransactionList from '../components/TransactionList';
@@ -13,20 +13,26 @@ function Home() {
 
       <SearchBar />
 
-      <Grid container spacing={3} sx={{ marginTop: 2 }}>
-        <Grid item xs={12} sm={6}>
+      <Stack
+        spacing={3}
+        sx={{
+          marginTop: 2,
+          flexDirection: { xs: 'column', sm: 'row' }
+        }}
+      >
+        <Box flex={1}>
           <Typography variant="h6" gutterBottom>
             Últimos Blocos
           </Typography>
           <BlockList />
-        </Grid>
-        <Grid item xs={12} sm={6}>
+        </Box>
+        <Box flex={1}>
           <Typography variant="h6" gutterBottom>
             Últimas Transações
           </Typography>
           <TransactionList />
-        </Grid>
-      </Grid>
+        </Box>
+      </Stack>
     </Container>
   );
 }
