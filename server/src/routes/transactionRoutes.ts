@@ -4,6 +4,6 @@ import { getLatestTransactions, getTransactionDetails } from '../controllers/tra
 const router = Router();
 
 router.get('/transactions', getLatestTransactions);
-router.get('/transactions/:id', getTransactionDetails);
+router.get('/transactions/:hash', getTransactionDetails);
 
 export default router;

@@ -4,6 +4,6 @@ import { getLatestLedgers, getLedgerDetails } from '../controllers/ledgerControl
 const router = Router();
 
 router.get('/ledgers', getLatestLedgers);
-router.get('/ledgers/:id', getLedgerDetails);
+router.get('/ledgers/:sequence', getLedgerDetails);
 
 export default router;

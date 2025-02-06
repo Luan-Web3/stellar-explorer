@@ -27,8 +27,8 @@ export const getLatestTransactions = async (req: Request, res: Response) => {
 
 export const getTransactionDetails = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params;
-        const response = await api.get(`/transactions/${id}`);
+        const { hash } = req.params;
+        const response = await api.get(`/transactions/${hash}`);
         res.json(response.data);
     } catch (error: any) {
         console.error('Error fetching transaction details:', error.message);
