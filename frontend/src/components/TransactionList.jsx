@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { List, ListItem, ListItemText, Divider, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import stellarService from '../services/stellarService';
 import api from '../axios';
 
 function TransactionList() {

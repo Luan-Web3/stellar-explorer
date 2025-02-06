@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Typography, Container, Grid, Paper } from '@mui/material';
-import stellarService from '../services/stellarService';
 import api from '../axios';
 
 function TransactionDetails() {

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -22,7 +22,6 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.5",
     "redux": "^5.0.1",
-    "stellar-sdk": "^13.1.0",
     "styled-components": "^6.1.14"
   },
   "devDependencies": {
