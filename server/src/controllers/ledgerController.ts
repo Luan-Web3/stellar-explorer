@@ -24,3 +24,14 @@ export const getLatestLedgers = async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Error fetching latest ledgers' });
     }
 };
+
+export const getLedgerDetails = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const response = await api.get(`/ledgers/${id}`);
+        res.json(response.data);
+    } catch (error: any) {
+        console.error('Error fetching ledger details:', error.message);
+        res.status(500).json({ error: 'Error fetching ledger details' });
+    }
+};

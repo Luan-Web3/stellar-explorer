@@ -24,3 +24,14 @@ export const getLatestTransactions = async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Error fetching latest transactions' });
     }
 };
+
+export const getTransactionDetails = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const response = await api.get(`/transactions/${id}`);
+        res.json(response.data);
+    } catch (error: any) {
+        console.error('Error fetching transaction details:', error.message);
+        res.status(500).json({ error: 'Error fetching transaction details' });
+    }
+};
